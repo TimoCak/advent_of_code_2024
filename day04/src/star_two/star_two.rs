@@ -4,16 +4,16 @@ const MAS: &str = "MAS";
 
 fn has_first_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
     let coord = list_2_d.get(x).unwrap().get(y).unwrap();
-    let coord_righ_up = list_2_d.get(x + 1);
+    let coord_x = list_2_d.get(x + 1);
 
-    let mut coord_right_up_value = char::default();
-    let mut coord_left_down_value = char::default();
+    let mut coord_x_value = char::default();
+    let mut coord_y_value = char::default();
 
-    if coord_righ_up.is_some() {
-        let coord_right_up_value_check = coord_righ_up.unwrap().get(y + 1);
+    if coord_x.is_some() {
+        let coord_x_value_check = coord_x.unwrap().get(y + 1);
 
-        if coord_right_up_value_check.is_some() {
-            coord_right_up_value = coord_right_up_value_check.unwrap().to_owned();
+        if coord_x_value_check.is_some() {
+            coord_x_value = coord_x_value_check.unwrap().to_owned();
         } else {
             return false;
         }
@@ -22,10 +22,10 @@ fn has_first_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
     }
 
     if x >= 1 {
-        let coord_left_down = list_2_d.get(x - 1);
-        if coord_left_down.is_some() {
+        let coord_y = list_2_d.get(x - 1);
+        if coord_y.is_some() {
             if y >= 1 {
-                coord_left_down_value = coord_left_down.unwrap().get(y - 1).unwrap().to_owned();
+                coord_y_value = coord_y.unwrap().get(y - 1).unwrap().to_owned();
             } else {
                 return false;
             }
@@ -36,18 +36,8 @@ fn has_first_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
         return false;
     }
 
-    let first_composition = format!(
-        "{}{}{}",
-        coord_left_down_value,
-        coord.to_owned(),
-        coord_right_up_value
-    );
-    let second_composition = format!(
-        "{}{}{}",
-        coord_right_up_value,
-        coord.to_owned(),
-        coord_left_down_value
-    );
+    let first_composition = format!("{}{}{}", coord_y_value, coord.to_owned(), coord_x_value);
+    let second_composition = format!("{}{}{}", coord_x_value, coord.to_owned(), coord_y_value);
 
     if first_composition.eq(MAS) || second_composition.eq(MAS) {
         return true;
@@ -57,18 +47,17 @@ fn has_first_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
 }
 
 fn has_second_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
-
     let coord = list_2_d.get(x).unwrap().get(y).unwrap();
-    let coord_righ_up = list_2_d.get(x + 1);
+    let coord_x = list_2_d.get(x + 1);
 
-    let mut coord_right_up_value = char::default();
-    let mut coord_left_down_value = char::default();
+    let mut coord_x_value = char::default();
+    let mut coord_y_value = char::default();
 
-    if coord_righ_up.is_some() && y >= 1 {
-        let coord_right_up_value_check = coord_righ_up.unwrap().get(y - 1);
+    if coord_x.is_some() && y >= 1 {
+        let coord_x_value_check = coord_x.unwrap().get(y - 1);
 
-        if coord_right_up_value_check.is_some() {
-            coord_right_up_value = coord_right_up_value_check.unwrap().to_owned();
+        if coord_x_value_check.is_some() {
+            coord_x_value = coord_x_value_check.unwrap().to_owned();
         } else {
             return false;
         }
@@ -77,16 +66,14 @@ fn has_second_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
     }
 
     if x >= 1 {
-        let coord_left_down = list_2_d.get(x - 1);
-        if coord_left_down.is_some() {
-           
-            let coord_left_down_value_check = coord_left_down.unwrap().get(y+1);
-            if coord_left_down_value_check.is_some() {
-                coord_left_down_value = coord_left_down_value_check.unwrap().to_owned();
-            } else  {
+        let coord_y = list_2_d.get(x - 1);
+        if coord_y.is_some() {
+            let coord_y_value_check = coord_y.unwrap().get(y + 1);
+            if coord_y_value_check.is_some() {
+                coord_y_value = coord_y_value_check.unwrap().to_owned();
+            } else {
                 return false;
             }
-            
         } else {
             return false;
         }
@@ -94,18 +81,8 @@ fn has_second_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
         return false;
     }
 
-    let first_composition = format!(
-        "{}{}{}",
-        coord_left_down_value,
-        coord.to_owned(),
-        coord_right_up_value
-    );
-    let second_composition = format!(
-        "{}{}{}",
-        coord_right_up_value,
-        coord.to_owned(),
-        coord_left_down_value
-    );
+    let first_composition = format!("{}{}{}", coord_y_value, coord.to_owned(), coord_x_value);
+    let second_composition = format!("{}{}{}", coord_x_value, coord.to_owned(), coord_y_value);
 
     if first_composition.eq(MAS) || second_composition.eq(MAS) {
         return true;
@@ -113,7 +90,6 @@ fn has_second_diagonal(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> bool {
 
     false
 }
-
 
 pub fn count_x_formed_mas() -> i32 {
     let list_2_d: Vec<Vec<char>> = save_input_into_2_d_list();
