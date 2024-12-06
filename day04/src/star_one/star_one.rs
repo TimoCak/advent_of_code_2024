@@ -31,7 +31,7 @@ fn horizontal_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
     current_string = String::default();
@@ -47,7 +47,7 @@ fn horizontal_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
     amount
@@ -65,7 +65,7 @@ fn vertical_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
     current_string = String::default();
@@ -82,7 +82,7 @@ fn vertical_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
     amount
@@ -103,7 +103,7 @@ fn diagonal_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
     current_string = String::default();
@@ -124,7 +124,7 @@ fn diagonal_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
     current_string = String::default();
@@ -145,7 +145,7 @@ fn diagonal_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
     current_string = String::default();
@@ -166,7 +166,7 @@ fn diagonal_count(x: usize, y: usize, list_2_d: &Vec<Vec<char>>) -> i32 {
             break;
         }
     }
-    if current_string.eq("XMAS") {
+    if current_string.eq(XMAS) {
         amount += 1;
     }
 
